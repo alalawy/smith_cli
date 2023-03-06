@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:smith_cli/utils/utils.dart';
+import 'package:smith/utils/utils.dart';
 
 Future<void> generateDomainRepositoryInterface(String args) async {
   /// Definisikan nama file yang akan digenerate

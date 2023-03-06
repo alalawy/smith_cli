@@ -1,5 +1,5 @@
-name: smith_cli
-description: A sample command-line application.
+name: smith
+description: A code generator to create datasource, repository, interface, service, etc
 version: 0.0.1
 # repository: https://github.com/my_org/my_repo
 
