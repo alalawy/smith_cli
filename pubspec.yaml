@@ -1,4 +1,4 @@
-name: smith
+name: smith_cli
 description: A code generator to create datasource, repository, interface, service, etc
 version: 0.0.1
 # repository: https://github.com/my_org/my_repo
@@ -12,3 +12,11 @@ environment:
 dev_dependencies:
   lints: ^2.0.0
   test: ^1.21.0
+
+executables:
+  smith_cli: smith
+
+platforms:
+  windows:
+  linux:
+  macos:

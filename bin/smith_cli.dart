@@ -1,4 +1,4 @@
-import 'package:smith/smith_cli.dart' as smith_cli;
+import 'package:smith_cli/smith_cli.dart' as smith_cli;
 
 import 'dart:io';
 
