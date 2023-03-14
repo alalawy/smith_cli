@@ -1,7 +1,7 @@
 name: smith_cli
 description: A code generator to create datasource, repository, interface, service, etc
 version: 0.0.1
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/alalawy/smith_cli
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
