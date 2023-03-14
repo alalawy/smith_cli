@@ -1,7 +1,5 @@
 import 'package:smith_cli/smith_cli.dart' as smith_cli;
 
-import 'dart:io';
-
 void main(List<String> arguments) {
   // Cek apakah command yang dimasukkan adalah "smith -g all"
   // Panggil fungsi generateEventCode()
