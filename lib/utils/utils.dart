@@ -50,3 +50,14 @@ String toCamelCaseVar(String underscoreString) {
 
   return camelCaseString;
 }
+
+String removeDataTypesFromString(String inputString) {
+  // Regex pattern to match data types
+  RegExp dataTypePattern = RegExp(
+      '\\b(bool|int|double|num|String|dynamic|List|List<dynamic>|Map<String, dynamic>)\\b');
+
+  // Replace data type matches with an empty string
+  String outputString = inputString.replaceAll(dataTypePattern, '');
+
+  return outputString.trim(); // Remove leading/trailing white space
+}

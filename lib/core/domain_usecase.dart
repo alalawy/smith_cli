@@ -21,16 +21,22 @@ Future<void> generateDomainUsecase(String args, String param) async {
       final I${className}Repository _${varName}Repository;
 
       ${className}UseCase(this._${varName}Repository);
-
+      
+      // delete this code if not use
+      // BEGIN
       Future<List<Data>> get${className}s($param) async {
-        final ${varName}s = await _${varName}Repository.get$className($param);
+        final ${varName}s = await _${varName}Repository.get$className(${removeDataTypesFromString(param)});
         return ${varName}s.map(($varName) => $varName).toList();
       }
+      // END
 
+      // delete this code if not use
+      // BEGIN
       Future<BaseResponse<List<Data$className>>> get$className($param) async {
-        final $varName = await _${varName}Repository.get$className($param);
+        final $varName = await _${varName}Repository.get$className(${removeDataTypesFromString(param)});
         return $varName;
       }
+      // END
     }
 
   ''';

@@ -23,13 +23,19 @@ Future<void> generateDomainService(String args, String param) async {
 
       ${className}Service(this._${varName}UseCase);
 
+      // delete this code if not use
+      // BEGIN
       Future<List<Data>> get${className}s($param) async {
-        return _${varName}UseCase.get${className}s($param);
+        return _${varName}UseCase.get${className}s(${removeDataTypesFromString(param)});
       }
+      // END
       
+      // delete this code if not use
+      // BEGIN
       Future<BaseResponse<List<Data$className>>> get$className($param) async {
-        return _${varName}UseCase.get$className($param);
+        return _${varName}UseCase.get$className(${removeDataTypesFromString(param)});
       }
+      // END
     }
 
     

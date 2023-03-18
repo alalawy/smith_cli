@@ -5,13 +5,15 @@ void main(List<String> arguments) {
   // Panggil fungsi generateEventCode()
   if (arguments[0] == "-g" || arguments[0] == "generate") {
     if (arguments[1] == "all") {
-      if (arguments[3] == "param") {
+      if (arguments.length >= 3 && arguments[3] == "param") {
+        smith_cli.generateModel(arguments[2], arguments[4]);
         smith_cli.generateDataDataSource(arguments[2], arguments[4]);
         smith_cli.generateDataRepository(arguments[2], arguments[4]);
         smith_cli.generateDomainRepositoryInterface(arguments[2], arguments[4]);
         smith_cli.generateDomainService(arguments[2], arguments[4]);
         smith_cli.generateDomainUsecase(arguments[2], arguments[4]);
       } else {
+        smith_cli.generateModel(arguments[2], '');
         smith_cli.generateDataDataSource(arguments[2], '');
         smith_cli.generateDataRepository(arguments[2], '');
         smith_cli.generateDomainRepositoryInterface(arguments[2], '');

@@ -16,14 +16,20 @@ Future<void> generateDomainRepositoryInterface(
   String code = '''
     import '../../../data/$underscore/model/${underscore}_model.dart';
 
+    // delete this code if not use
+    // BEGIN
     abstract class I${className}Repository {
       Future<List<Data>> get$className($param);
     }
+    // END
 
 
+    // delete this code if not use
+    // BEGIN
     abstract class I${className}Repository {
       Future<BaseResponse<List<Data$className>>> get$className($param);
     }
+    // END
 
 
   ''';

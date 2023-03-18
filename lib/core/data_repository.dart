@@ -23,7 +23,7 @@ Future<void> generateDataRepository(String args, String param) async {
     class ${className}Repository implements I${className}Repository {
       final ${className}DataSource _${varName}DataSource = Get.find<${className}DataSource>();
 
-      // comment this code if your response data is single
+      // delete this code if not use
       // BEGIN
       @override
       Future<List<Data>> get$className($param) async {
@@ -42,7 +42,7 @@ Future<void> generateDataRepository(String args, String param) async {
 
       // =================================================================
 
-      // comment this code if your response data is Multiple
+      // delete this code if not usev
       // BEGIN
       @override
       Future<Data> get${className}By($param) async {
@@ -57,10 +57,11 @@ Future<void> generateDataRepository(String args, String param) async {
       }
       // END
 
+      // delete this code if not use
       // BEGIN
       @override
       Future<BaseResponse<List<Data$className>>> get$className($param) async {
-        final response = await _${varName}DataSource.get$className($param);
+        final response = await _${varName}DataSource.get$className(${removeDataTypesFromString(param)});
 
         if (response.statusCode == 200) {
           final dataJson = response.body;
