@@ -6,7 +6,7 @@ Future<void> generateBinding(String args, String param) async {
   /// Definisikan nama file yang akan digenerate
 
   String underscore = toUnderscore(args);
-  String directoryName = "infrastructure/navigation/bindings/controllers/";
+  String directoryName = "lib/infrastructure/navigation/bindings/controllers/";
   await checkDirectoryAvailable(directoryName);
   String fileName = "$directoryName$args.controller.binding.dart";
   String className = toCamelCase(underscore);
