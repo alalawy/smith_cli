@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:smith_cli/utils/utils.dart';
 
-Future<void> generateDomainRepositoryInterface(String args) async {
+Future<void> generateDomainRepositoryInterface(
+    String args, String param) async {
   /// Definisikan nama file yang akan digenerate
 
   String underscore = toUnderscore(args);
@@ -16,8 +17,14 @@ Future<void> generateDomainRepositoryInterface(String args) async {
     import '../../../data/$underscore/model/${underscore}_model.dart';
 
     abstract class I${className}Repository {
-      Future<List<Data>> get$className();
+      Future<List<Data>> get$className($param);
     }
+
+
+    abstract class I${className}Repository {
+      Future<BaseResponse<List<Data$className>>> get$className($param);
+    }
+
 
   ''';
 

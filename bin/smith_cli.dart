@@ -5,11 +5,22 @@ void main(List<String> arguments) {
   // Panggil fungsi generateEventCode()
   if (arguments[0] == "-g" || arguments[0] == "generate") {
     if (arguments[1] == "all") {
-      smith_cli.generateDataDataSource(arguments[2]);
-      smith_cli.generateDataRepository(arguments[2]);
-      smith_cli.generateDomainRepositoryInterface(arguments[2]);
-      smith_cli.generateDomainService(arguments[2]);
-      smith_cli.generateDomainUsecase(arguments[2]);
+      if (arguments[3] == "param") {
+        smith_cli.generateDataDataSource(arguments[2], arguments[4]);
+        smith_cli.generateDataRepository(arguments[2], arguments[4]);
+        smith_cli.generateDomainRepositoryInterface(arguments[2], arguments[4]);
+        smith_cli.generateDomainService(arguments[2], arguments[4]);
+        smith_cli.generateDomainUsecase(arguments[2], arguments[4]);
+      } else {
+        smith_cli.generateDataDataSource(arguments[2], '');
+        smith_cli.generateDataRepository(arguments[2], '');
+        smith_cli.generateDomainRepositoryInterface(arguments[2], '');
+        smith_cli.generateDomainService(arguments[2], '');
+        smith_cli.generateDomainUsecase(arguments[2], '');
+      }
+    }
+    if (arguments[1] == 'binding') {
+      smith_cli.generateBinding(arguments[2], '');
     }
   } else {
     // Jika command yang dimasukkan salah, tampilkan pesan error

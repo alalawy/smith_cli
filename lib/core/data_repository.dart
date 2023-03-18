@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:smith_cli/utils/utils.dart';
 
-Future<void> generateDataRepository(String args) async {
+Future<void> generateDataRepository(String args, String param) async {
   /// Definisikan nama file yang akan digenerate
 
   String underscore = toUnderscore(args);
@@ -26,8 +26,8 @@ Future<void> generateDataRepository(String args) async {
       // comment this code if your response data is single
       // BEGIN
       @override
-      Future<List<Data>> get$className() async {
-        final response = await _${varName}DataSource.get${className}s();
+      Future<List<Data>> get$className($param) async {
+        final response = await _${varName}DataSource.get${className}s($param);
 
         if (response.statusCode == 200) {
           final List<dynamic> ${varName}sJson = response.body['data'];
@@ -45,12 +45,29 @@ Future<void> generateDataRepository(String args) async {
       // comment this code if your response data is Multiple
       // BEGIN
       @override
-      Future<Data> get${className}By(String data) async {
-        final response = await _${varName}DataSource.get${className}By(data);
+      Future<Data> get${className}By($param) async {
+        final response = await _${varName}DataSource.get${className}By($param);
 
         if (response.statusCode == 200) {
           final dataJson = response.body;
           return Data.fromJson(dataJson);
+        } else {
+          throw Exception('Failed to load $varName');
+        }
+      }
+      // END
+
+      // BEGIN
+      @override
+      Future<BaseResponse<List<Data$className>>> get$className($param) async {
+        final response = await _${varName}DataSource.get$className($param);
+
+        if (response.statusCode == 200) {
+          final dataJson = response.body;
+          return BaseResponse<List<Data$className>>.fromJson(
+              dataJson,
+              (jsonData) =>
+                  (jsonData as List).map((e) => Data$className.fromJson(e)).toList());
         } else {
           throw Exception('Failed to load $varName');
         }

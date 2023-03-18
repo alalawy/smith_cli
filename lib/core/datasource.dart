@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:smith_cli/utils/utils.dart';
 
-Future<void> generateDataDataSource(String args) async {
+Future<void> generateDataDataSource(String args, String param) async {
   /// Definisikan nama file yang akan digenerate
 
   String underscore = toUnderscore(args);
@@ -14,14 +14,15 @@ Future<void> generateDataDataSource(String args) async {
   /// Definisikan kode yang akan digenerate ke dalam file
   String code = '''
     import 'package:get/get.dart';
-
+    import 'package:get_storage/get_storage.dart';
     import '../../../config.dart';
 
     class ${className}DataSource extends GetConnect {
-      Future<Response> get$className() {
+      final box = GetStorage();
+      Future<Response> get$className($param) {
         var env = ConfigEnvironments.getEnvironments();
         return get('\${env['url']}/',
-            headers: {"Authorization": env['bearerToken']!});
+            headers: {"Authorization": 'Bearer \${box.read('jwt')}'});
       }
     }
 

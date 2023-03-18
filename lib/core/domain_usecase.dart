@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:smith_cli/utils/utils.dart';
 
-Future<void> generateDomainUsecase(String args) async {
+Future<void> generateDomainUsecase(String args, String param) async {
   /// Definisikan nama file yang akan digenerate
 
   String underscore = toUnderscore(args);
@@ -22,9 +22,14 @@ Future<void> generateDomainUsecase(String args) async {
 
       ${className}UseCase(this._${varName}Repository);
 
-      Future<List<Data>> get${className}s() async {
-        final ${varName}s = await _${varName}Repository.get$className();
+      Future<List<Data>> get${className}s($param) async {
+        final ${varName}s = await _${varName}Repository.get$className($param);
         return ${varName}s.map(($varName) => $varName).toList();
+      }
+
+      Future<BaseResponse<List<Data$className>>> get$className($param) async {
+        final $varName = await _${varName}Repository.get$className($param);
+        return $varName;
       }
     }
 

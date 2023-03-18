@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:smith_cli/utils/utils.dart';
 
-Future<void> generateDomainService(String args) async {
+Future<void> generateDomainService(String args, String param) async {
   /// Definisikan nama file yang akan digenerate
 
   String underscore = toUnderscore(args);
@@ -23,10 +23,16 @@ Future<void> generateDomainService(String args) async {
 
       ${className}Service(this._${varName}UseCase);
 
-      Future<List<Data>> get${className}s() async {
-        return _${varName}UseCase.get${className}s();
+      Future<List<Data>> get${className}s($param) async {
+        return _${varName}UseCase.get${className}s($param);
+      }
+      
+      Future<BaseResponse<List<Data$className>>> get$className($param) async {
+        return _${varName}UseCase.get$className($param);
       }
     }
+
+    
 
 
   ''';
