@@ -38,6 +38,19 @@ Future<void> generateBinding(String args, String param) async {
   File file = File(fileName);
   file.writeAsStringSync(lines.join('\n'));
 
+  String fileContents = File(fileName).readAsStringSync();
+
+  // Find the line containing "StokController("
+  int startIndex = fileContents.indexOf("${className}Controller(");
+  int endIndex = fileContents.indexOf(")", startIndex);
+
+  // Insert code before the closing bracket
+  String updatedContents =
+      fileContents.replaceRange(endIndex, endIndex, '${varName}Service');
+
+  // Write updated string back to file
+  File(fileName).writeAsStringSync(updatedContents);
+
   // Tampilkan pesan sukses
   print("Code generated successfully in $fileName");
 }
